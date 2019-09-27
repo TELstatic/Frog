@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/demo', function () {
+    $service = new Arabeila\Tools\Services\PostmanService();
+
+    return $service->index();
+});
+
+Route::post('login', 'Admin\LoginController@login');
+Route::post('register', 'Admin\LoginController@register');
